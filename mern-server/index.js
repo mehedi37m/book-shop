@@ -42,6 +42,14 @@ async function run() {
    })
 
 
+   app.get("/book/:id", async(req, res) => {
+    const id = req.params.id;
+    const filter = { _id: new ObjectId(id)};
+    const result = await booksCollection.findOne(filter);
+    res.send(result);
+   })
+
+
 
    app.post("/upload-book", async (req,res) => {
     const data = req.body;

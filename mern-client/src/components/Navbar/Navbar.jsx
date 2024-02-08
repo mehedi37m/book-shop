@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaBlog, FaXbox } from "react-icons/fa";
+import { FaBars, FaBlog } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 
 
@@ -41,10 +41,10 @@ const navItems = [
 
 
     return (
-        <div>
+        <div className="w-full bg-transparent fixed top-0 left-0 right-0 transition-all ease-in duration-300">
            
-          <nav>
-            <div>
+          <nav className={`py-4 lg:px-24 ${isSticky ? "sticky top-0 left-0 right-0 bg-blue-300" : ""}`}>
+            <div className="flex justify-between items-center text-base gap-8">
                 {/* logo */}
                 <Link to="/" className="text-2xl font-bold text-blue-700 flex items-center gap-2"><FaBlog className="inline-block"></FaBlog>Book</Link>
 
@@ -64,7 +64,7 @@ const navItems = [
                   <div className="md:hidden"> 
                     <button onClick={toggleMenu}>
                         {
-                            isMenuOpen ? <FaBars className="h-5 w5 text-black"></FaBars> : <ImCross className="h-5 w5 text-black"></ImCross>
+                            isMenuOpen ? <ImCross className="h-5 w5 text-black"></ImCross> : <FaBars className="h-5 w5 text-black"></FaBars>
                         }
 
                     </button>
@@ -73,7 +73,7 @@ const navItems = [
 
             {/* navItems for devices */}
 
-            <div className={`space-y-4 mt-16 bg-blue-950 ${isMenuOpen ? "block fi"}`}>
+            <div className={`space-y-4 mt-16 bg-blue-950 ${isMenuOpen ? "block fixed top-0 right-0 left-0" : "hidden"}`}>
                 {
                      navItems.map(({link, path})=><Link key={path} to={path} className="block text-base text-white uppercase hover:text-blue-700">{link}</Link>)
                 }
