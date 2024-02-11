@@ -1,7 +1,10 @@
+import MyFooter from "../../../components/MyFooter/MyFooter";
 import Banner from "../Banner/Banner";
 import FavoriteBooks from "../FavoriteBooks/FavoriteBooks";
 import NewBooks from "../NewBooks/NewBooks";
+import OtherBooks from "../OtherBooks/OtherBooks";
 import PromoBanner from "../PromoBanner/PromoBanner";
+import Review from "../Review/Review";
 
 
 const Home = () => {
@@ -11,6 +14,9 @@ const Home = () => {
          <FavoriteBooks></FavoriteBooks>
          <NewBooks></NewBooks>
          <PromoBanner></PromoBanner>
+         <OtherBooks></OtherBooks>
+         <Review></Review>
+         <MyFooter></MyFooter>
         </div>
     );
 };
