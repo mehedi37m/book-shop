@@ -12,7 +12,7 @@ const MyFooter = () => {
     <div>
      
       <Footer bgDark>
-        <div className="w-full">
+        <div className="w-full lg:px-24 px-4">
           <div className="grid w-full grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
             <div>
               <Footer.Title title="Company" />

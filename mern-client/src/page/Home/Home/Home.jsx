@@ -1,4 +1,4 @@
-import MyFooter from "../../../components/MyFooter/MyFooter";
+// import MyFooter from "../../../components/MyFooter/MyFooter";
 import Banner from "../Banner/Banner";
 import FavoriteBooks from "../FavoriteBooks/FavoriteBooks";
 import NewBooks from "../NewBooks/NewBooks";
@@ -16,7 +16,7 @@ const Home = () => {
          <PromoBanner></PromoBanner>
          <OtherBooks></OtherBooks>
          <Review></Review>
-         <MyFooter></MyFooter>
+         {/* <MyFooter></MyFooter> */}
         </div>
     );
 };
