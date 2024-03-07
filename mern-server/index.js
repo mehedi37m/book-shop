@@ -80,7 +80,7 @@ async function run() {
 
 // delete book 
 
-app.patch("/book/:id", async (req, res) => {
+app.delete("/book/:id", async (req, res) => {
   const id = req.params.id;
   const filter = {_id: new ObjectId(id)};
   const result = await booksCollection.deleteOne(filter);
