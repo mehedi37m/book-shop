@@ -7,6 +7,7 @@ const EditBooks = () => {
   const {id} = useParams();
   const {bookTitle, authorName, image, category, bookDescription , bookPDF} = useLoaderData();
 
+  console.log(id)
 
   const bookCategory = [
     "Fiction",
@@ -36,30 +37,63 @@ const [selectBook, setSelectedBook] = useState(bookCategory[0]);
      setSelectedBook(event.target.value);
  }
 
-const handleUpdate = (event) =>{
-    event.preventDefault();
-    const form = event.target;
-    const bookTitle = form.bookTitle.value;
-    const image = form.image.value;
-    const category = form.categoryName.value;
-    const bookDescription = form.bookDescription.value;
-    const authorName = form.authorName.value;
-    const bookPDF = form.bookPDF.value;
+// const handleUpdate = (event) =>{
+//     event.preventDefault();
+//     const form = event.target;
+//     const bookTitle = form.bookTitle.value;
+//     const image = form.image.value;
+//     const category = form.categoryName.value;
+//     const bookDescription = form.bookDescription.value;
+//     const authorName = form.authorName.value;
+//     const bookPDF = form.bookPDF.value;
 
-   const updateBookObj = {bookTitle, image, category, bookDescription, authorName, bookPDF}
+//    const updateBookObj = {bookTitle, image, category, bookDescription, authorName, bookPDF}
 
-   fetch(`http://localhost:5000/book/${id}`, {
-    method: "PATCH",
-    headers: {
-        "content-type": "application/json",
-    },
-    body: JSON.stringify(updateBookObj)
-   })
-     .then(res => res.json())
-     .then(data => {
-        alert('book updated successfully')
-        
-     })
+//    fetch(`http://localhost:5000/book/${id}`, {
+//     method: "PATCH",
+//     headers: {
+//         "content-type": "application/json",
+//     },
+//     body: JSON.stringify(updateBookObj)
+//    })
+//      .then(res => res.json())
+//      .then(data => {
+//         alert('book updated successfully')  
+//      })
+// }
+
+const handleUpdate = (event) => {
+  event.preventDefault();
+  const form = event.target;
+  const updatedBook = {
+      bookTitle: form.bookTitle.value,
+      authorName: form.authorName.value,
+      image: form.image.value,
+      category: form.categoryName.value,
+      bookDescription: form.bookDescription.value,
+      bookPDF: form.bookPDF.value
+  };
+
+  fetch(`http://localhost:5000/book/${id}`, {
+      method: "PATCH",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updatedBook)
+  })
+  .then(res => {
+      if (!res.ok) {
+          throw new Error('Network response was not ok');
+      }
+      return res.json();
+  })
+  .then(data => {
+      alert('Book updated successfully');
+  })
+  .catch(error => {
+      console.error('Error updating book:', error);
+      alert('An error occurred while updating the book. Please try again.');
+  });
 }
 
 

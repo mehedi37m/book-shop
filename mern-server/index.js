@@ -4,7 +4,13 @@ const port = process.env.PORT || 5000
 const cors = require('cors');
 
 // middleware
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+  // allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
 app.use(express.json())
 
 // demo-book-store
@@ -63,14 +69,13 @@ async function run() {
     const id = req.params.id;
     const updateBookData = req.body;
     const filter = {_id: new ObjectId(id)};
-    const option = { upsert: true};
-
+   
     const updateDoc = {
       $set:{
         ...updateBookData
       }
     }
-
+    const option = { upsert: true};
     const result = await booksCollection.updateOne(filter, updateDoc, option);
     res.send(result);
 
