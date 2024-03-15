@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaBlog } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
+import { AuthContext } from "../../conteccts/AuthProvider";
 
 
 const Navbar = () => {
@@ -9,7 +10,8 @@ const Navbar = () => {
  const [isMenuOpen, setIsMenuOpen] = useState(false);
  const [isSticky, setIsSticky] = useState(false);
 
-
+const {user} = useContext(AuthContext);
+console.log(user);
 
 //  toggle menu
 const toggleMenu = () => {
@@ -58,6 +60,9 @@ const navItems = [
                 {/* btn  */}
                   <div className="space-x-12 hidden lg:flex items-center">
                     <button><FaBars className="w-5 hover:text-blue-700"></FaBars></button>
+                    {
+                        user? user.email : " "
+                    }
                   </div>
 
                   {/* menu btn mobile */}
