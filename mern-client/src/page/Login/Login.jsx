@@ -3,8 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../conteccts/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 
-const Signup = () => {
-  const { createUser, loginWithGoogle } = useContext(AuthContext);
+const Login = () => {
+  const { login, loginWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState("error");
 
   const location = useLocation();
@@ -12,17 +12,17 @@ const Signup = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-  const handleSignUp = (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
 
     //  console.log(email, password);
-    createUser(email, password)
+    login(email, password)
       .then((data) => {
         const user = data.user;
-        alert("signUp successfully");
+        alert("login successfully");
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -32,11 +32,10 @@ const Signup = () => {
       });
   };
 
-  const handleRegister = () => {
+  const handleRegister = (event) => {
     loginWithGoogle()
       .then((result) => {
         const user = result.user;
-        alert("signUp successfully");
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -52,11 +51,11 @@ const Signup = () => {
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <div className="max-w-md mx-auto">
             <div>
-              <h1 className="text-2xl font-semibold">Sign Up Now!</h1>
+              <h1 className="text-2xl font-semibold">Login Now!</h1>
             </div>
             <div className="divide-y divide-gray-200">
               <form
-                onSubmit={handleSignUp}
+                onSubmit={handleLogin}
                 className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7"
               >
                 <div className="relative">
@@ -78,14 +77,14 @@ const Signup = () => {
                   />
                 </div>
                 <p>
-                  If you have an account. Please{" "}
-                  <Link to="/login" className="text-blue-500 underline">
-                    Login
+                  If you have no account. Please{" "}
+                  <Link to="/sign-up" className="text-blue-500 underline">
+                    Sign-Up
                   </Link>
                 </p>
                 <div class="relative">
                   <button className="bg-blue-500 text-white rounded-md px-2 py-2">
-                    Sign Up
+                    Login
                   </button>
                 </div>
               </form>
@@ -106,4 +105,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;

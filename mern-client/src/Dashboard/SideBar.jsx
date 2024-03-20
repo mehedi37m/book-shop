@@ -30,8 +30,8 @@ const SideBar = () => {
           <Sidebar.Item href="/login" icon={HiArrowSmRight}>
             Sign In
           </Sidebar.Item>
-          <Sidebar.Item href="/signUp" icon={HiTable}>
-            Sign Up
+          <Sidebar.Item href="/logout" icon={HiTable}>
+            LogOut
           </Sidebar.Item>
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
