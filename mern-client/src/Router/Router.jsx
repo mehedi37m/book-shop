@@ -41,14 +41,18 @@ import Logout from "../page/Logout/Logout";
         {
             path:'/book/:id',
             element:<SingleBook></SingleBook>,
-            loader:({params}) => fetch(`http://localhost:5000/book/${params.id}`)
+            loader:({params}) => fetch(`https://book-store-server-two.vercel.app/book/${params.id}`)
         },
       ]
     },
     {
       path:"/admin/dashboard",
-      element:<DashboardLayout></DashboardLayout>,
+      element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
       children:[
+        {
+          path:"/admin/dashboard/manage",
+          element:<ManageBook></ManageBook>
+        },
         {
           path:"/admin/dashboard",
           element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>
@@ -57,14 +61,11 @@ import Logout from "../page/Logout/Logout";
           path:"/admin/dashboard/upload",
           element:<UploadBook></UploadBook>
         },
-        {
-          path:"/admin/dashboard/manage",
-          element:<ManageBook></ManageBook>
-        },
+        
         {
           path:"/admin/dashboard/edit-books/:id",
           element:<EditBooks></EditBooks>,
-          loader:({params}) => fetch(`http://localhost:5000/book/${params.id}`)
+          loader:({params}) => fetch(`https://book-store-server-two.vercel.app/book/${params.id}`)
         },
       ]
     },

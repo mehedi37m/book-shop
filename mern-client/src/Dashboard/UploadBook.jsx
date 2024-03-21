@@ -43,7 +43,7 @@ const handleBookSubmit = (event) =>{
 
    const bookObj = {bookTitle, image, category, bookDescription, authorName, bookPDF}
 
-   fetch("http://localhost:5000/upload-book", {
+   fetch("https://book-store-server-two.vercel.app/upload-book", {
     method: "POST",
     headers: {
         "content-type": "application/json",

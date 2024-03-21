@@ -49,7 +49,7 @@ const [selectBook, setSelectedBook] = useState(bookCategory[0]);
 
 //    const updateBookObj = {bookTitle, image, category, bookDescription, authorName, bookPDF}
 
-//    fetch(`http://localhost:5000/book/${id}`, {
+//    fetch(`https://book-store-server-two.vercel.app/book/${id}`, {
 //     method: "PATCH",
 //     headers: {
 //         "content-type": "application/json",
@@ -74,7 +74,7 @@ const handleUpdate = (event) => {
       bookPDF: form.bookPDF.value
   };
 
-  fetch(`http://localhost:5000/book/${id}`, {
+  fetch(`https://book-store-server-two.vercel.app/book/${id}`, {
       method: "PATCH",
       headers: {
           "Content-Type": "application/json"

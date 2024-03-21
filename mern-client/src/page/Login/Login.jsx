@@ -5,7 +5,7 @@ import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
   const { login, loginWithGoogle } = useContext(AuthContext);
-  const [error, setError] = useState("error");
+  const [error, setError] = useState("");
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -76,6 +76,11 @@ const Login = () => {
                     placeholder="Password"
                   />
                 </div>
+                
+                  {
+                    error ? <p div className="text-red-700">"Email or password not correct"</p> : ""
+                  }
+               
                 <p>
                   If you have no account. Please{" "}
                   <Link to="/sign-up" className="text-blue-500 underline">

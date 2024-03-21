@@ -7,7 +7,7 @@ const OtherBooks = () => {
 
     
     useEffect(() =>{
-        fetch('http://localhost:5000/all-books')
+        fetch('https://book-store-server-two.vercel.app/all-books')
         .then(res => res.json())
         .then(data => setBooks(data.slice(4,8)))
     },[])
